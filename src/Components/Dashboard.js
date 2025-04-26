@@ -28,11 +28,11 @@ function Dashboard() {
 
   useEffect(() => {
     setPatientList(rows)
-    // axois.get(config.API_URL).then((res) => {
+    axois.get(config.API_URL).then((res) => {
 
-    // }).catch((err) => {
+    }).catch((err) => {
   
-    // });
+    });
   },[])
 
   const style = {
@@ -47,8 +47,8 @@ function Dashboard() {
 
   const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'firstName', headerName: 'First name', width: 130 },
-    { field: 'lastName', headerName: 'Last name', width: 130 },
+    { field: 'firstName', headerName: 'Patient First name', width: 140 },
+    { field: 'lastName', headerName: 'Patient Last name', width: 130 },
     {
       field: 'age',
       headerName: 'Age',
@@ -57,12 +57,13 @@ function Dashboard() {
     },
     {
       field: 'fullName',
-      headerName: 'Full name',
+      headerName: 'Patient name',
       description: 'This column has a value getter and is not sortable.',
       sortable: false,
       width: 160,
       valueGetter: (value, row) => `${row.firstName || ''} ${row.lastName || ''}`,
     },
+    { field: 'complaint', headerName: 'Complaint', width: 180 },
   ];  
   
   const paginationModel = { page: 0, pageSize: 5 };
@@ -94,7 +95,7 @@ function Dashboard() {
 
           <Divider component="li" />
           <ListItem>
-            <ListItemText primary="GENERAL WARD" />
+            <ListItemText style={{ width: '22px' }} primary="GENERAL WARD" />
             <Divider orientation="vertical" variant="middle" flexItem />
             <ListItemText className='reserved' primary="41B RESERVED" />
             <ListItemText className='reserved' primary="52A RESERVED" />
@@ -104,7 +105,7 @@ function Dashboard() {
       </Card>
       
       <DataGrid
-        rows={rows}
+        rows={patientList}
         columns={columns}
         initialState={{ pagination: { paginationModel } }}
         pageSizeOptions={[5, 10]}
