@@ -1,18 +1,29 @@
 import './App.css';
 import Dashboard from './Components/Dashboard';
 import PatienceAdmission from './Components/PatienceAdmission';
+import Login from './Components/Login';
+import SignUp from './Components/SignUp';
 import { createBrowserRouter, RouterProvider } from 'react-router';
 
 function App() {
   const routes = createBrowserRouter([
     {
       path: "/",
-      Component: Dashboard,
+      Component: Login,
     },
     {
       path: "/patient-admission",
       Component: PatienceAdmission,
     },
+    {
+      path: "/dashboard",
+      Component: Dashboard,
+    },
+    {
+      path: "/register",
+      Component: SignUp,
+    }
+
   ]);
 
   // return (
